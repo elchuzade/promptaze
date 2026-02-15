@@ -1,8 +1,52 @@
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { NavLinks } from "./components/nav-links";
 import { PlausibleInit } from "./plausible-init";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://promptaze.com";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
+    template: "%s | Promptaze",
+  },
+  description:
+    "Hazır AI promptlarını kopyalayın, öyrənin və öz ehtiyaclarınıza uyğunlaşdırın. Azərbaycan dilində ilk AI prompt kitabxanası. Biznes, marketinq və proqramlaşdırma üçün pulsuz promptlar.",
+  keywords: [
+    "AI prompts",
+    "Azərbaycan",
+    "prompt kitabxanası",
+    "ChatGPT",
+    "Gemini",
+    "biznes",
+    "marketinq",
+    "proqramlaşdırma",
+  ],
+  authors: [{ name: "Promptaze" }],
+  creator: "Promptaze",
+  openGraph: {
+    type: "website",
+    locale: "az_AZ",
+    url: siteUrl,
+    siteName: "Promptaze",
+    title: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
+    description:
+      "Hazır AI promptlarını kopyalayın, öyrənin və öz ehtiyaclarınıza uyğunlaşdırın. Azərbaycan dilində ilk AI prompt kitabxanası.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
+    description:
+      "Hazır AI promptlarını kopyalayın, öyrənin və öz ehtiyaclarınıza uyğunlaşdırın. Azərbaycan dilində ilk AI prompt kitabxanası.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL(siteUrl),
+};
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
