@@ -2,7 +2,7 @@
 
 **Azərbaycan dilində AI prompt kitabxanası** — hazır promptlarla daha yaxşı nəticələr əldə edin.
 
-**🌐 [Visit the website](https://promptaze.vercel.app)** · **Azərbaycanca:** [Sayta keçid](https://promptaze.vercel.app)
+**🌐 [Visit the website](https://promptaze.com)** · **Azərbaycanca:** [Sayta keçid](https://promptaze.com)
 
 Promptaze is an open collection of ready-to-use AI prompts in Azerbaijani. Copy, adapt, and share prompts for business, marketing, development, and more. Every new prompt helps the whole community work smarter with AI.
 
