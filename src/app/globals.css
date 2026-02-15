@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf9f7;
+  --foreground: #1c1917;
+  --muted-foreground: #57534e;
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
+  --border: #e7e5e4;
+  --card: #ffffff;
+  --card-border: #e7e5e4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1c1917;
+    --foreground: #fafaf9;
+    --muted-foreground: #a8a29e;
+    --accent: #2dd4bf;
+    --accent-hover: #5eead4;
+    --border: #292524;
+    --card: #292524;
+    --card-border: #44403c;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Prose styles for prompt article content */
+.prose-prompt {
+  --prose-body: var(--foreground);
+  --prose-headings: var(--foreground);
+  --prose-muted: var(--muted-foreground);
+}
+
+.prose-prompt h1,
+.prose-prompt h2,
+.prose-prompt h3 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+.prose-prompt h1 { font-size: 1.5rem; }
+.prose-prompt h2 { font-size: 1.25rem; }
+.prose-prompt h3 { font-size: 1.125rem; }
+
+.prose-prompt p {
+  margin-bottom: 0.875em;
+  color: var(--prose-body);
+}
+
+.prose-prompt ul,
+.prose-prompt ol {
+  margin: 0.75em 0;
+  padding-left: 1.5em;
+}
+
+.prose-prompt li {
+  margin-bottom: 0.35em;
+}
+
+.prose-prompt code {
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  background: var(--border);
+  color: var(--foreground);
+}
+
+.prose-prompt pre {
+  margin: 1em 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.prose-prompt pre code {
+  padding: 0;
+  background: none;
+}
+
+.prose-prompt strong {
+  font-weight: 600;
+}
+
+.prose-prompt a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-prompt a:hover {
+  color: var(--accent-hover);
 }
