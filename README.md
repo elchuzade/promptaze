@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Promptaze
 
-## Getting Started
+**Azərbaycan dilində AI prompt kitabxanası** — hazır promptlarla daha yaxşı nəticələr əldə edin.
 
-First, run the development server:
+Promptaze is an open collection of ready-to-use AI prompts in Azerbaijani. Copy, adapt, and share prompts for business, marketing, development, and more. Every new prompt helps the whole community work smarter with AI.
+
+---
+
+## ✨ Why contribute?
+
+- **One prompt can help hundreds of people** — your idea might be exactly what someone needs.
+- **It’s quick** — add a single Markdown file, no code required.
+- **You’ll be credited** — every contributor makes this library better for everyone.
+
+Whether you share one prompt or ten, you’re making AI more useful for Azerbaijani speakers.
+
+---
+
+## 🚀 Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Your new prompts will show up as soon as you add the files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 Add a new prompt (3 steps)
 
-## Learn More
+### 1. Choose a category
 
-To learn more about Next.js, take a look at the following resources:
+Current categories live in `src/content/categories.json`. Use one of the existing slugs:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Slug       | Title                      |
+| ---------- | -------------------------- |
+| `biznes`   | Biznes və Startaplar       |
+| `marketinq`| Marketinq və Sosial Media  |
+| `dev`      | Proqramlaşdırma və Veb     |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If you want a **new category**, add it to `categories.json` and create a folder with the same slug under `src/content/prompts/`.
 
-## Deploy on Vercel
+### 2. Create a Markdown file
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Add a new `.md` file in the right category folder:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/content/prompts/
+  biznes/
+    your-prompt-slug.md    ← new file here
+  marketinq/
+  dev/
+```
+
+**Filename** = URL slug (e.g. `biznes-plani.md` → `/prompts/biznes/biznes-plani`).
+
+### 3. Use this format
+
+```markdown
+---
+title: "Your prompt title in Azerbaijani"
+category: "biznes"
+difficulty: "beginner"
+models: ["gemini", "gpt"]
+tags: ["tag1", "tag2"]
+---
+
+One short paragraph describing what this prompt does. It appears above the prompt on the site.
+
+PROMPT:
+
+The actual prompt text that users will copy. Write it in Azerbaijani (or the language you prefer).
+Include instructions, placeholders, or structure.
+
+[User fills in or replaces this part]
+```
+
+**Rules:**
+
+- **Frontmatter** (between `---`) is required: `title`, `category`. The rest is optional.
+- **Description** = everything above the line `PROMPT:` (first paragraph is shown on the library cards).
+- **Copyable prompt** = everything below `PROMPT:` (this is what gets copied when someone clicks “Copy”).
+
+---
+
+## 📄 Example
+
+See a real prompt: [`src/content/prompts/biznes/biznes-plani.md`](src/content/prompts/biznes/biznes-plani.md).
+
+---
+
+## 🤝 How to submit
+
+1. **Fork** the repo.
+2. **Add or edit** prompt files under `src/content/prompts/` (and `categories.json` if you add a category).
+3. **Open a Pull Request** with a short description of what you added.
+
+No need to change any code — only Markdown. We’ll review and merge as soon as we can.
+
+---
+
+## 🛠 Tech
+
+- [Next.js](https://nextjs.org) · [React](https://react.dev) · [Tailwind CSS](https://tailwindcss.com)
+- Content: Markdown with frontmatter, parsed at build time.
+
+---
+
+Thank you for contributing. Every prompt makes Promptaze more useful for everyone.

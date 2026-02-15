@@ -27,8 +27,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               href="/"
               className="flex items-center gap-2 text-xl font-bold text-foreground hover:text-accent transition-colors"
             >
-              <span className="text-2xl" aria-hidden>⚡</span>
-              PromptAZ
+              <span className="text-2xl" aria-hidden>
+                ⚡
+              </span>
+              PromptAZE
             </Link>
             <nav className="flex items-center gap-6 text-sm text-foreground">
               <NavLinks />
