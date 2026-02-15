@@ -22,7 +22,10 @@ export async function getAllPrompts() {
       const { data, content } = matter(raw);
 
       const htmlContent = String(await remark().use(html).process(content));
+      const promptBlock = raw.split("PROMPT:")[0]?.trim() ?? "";
       const promptText = raw.split("PROMPT:")[1]?.trim() ?? "";
+      const description =
+        promptBlock.split(/\n\n+/)[0]?.trim().slice(0, 160) ?? "";
 
       prompts.push({
         slug,
@@ -30,6 +33,7 @@ export async function getAllPrompts() {
         meta: data,
         html: htmlContent,
         promptText,
+        description,
       });
     }
   }

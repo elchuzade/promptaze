@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import "./globals.css";
+import { NavLinks } from "./components/nav-links";
 import { PlausibleInit } from "./plausible-init";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -21,28 +22,24 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="min-h-screen flex flex-col bg-background text-foreground antialiased">
         <PlausibleInit />
         <header className="border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 sticky top-0 z-10">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 py-4 flex items-center justify-between">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 py-4 flex items-center justify-between">
             <Link
               href="/"
-              className="text-lg font-semibold text-foreground hover:text-accent transition-colors"
+              className="flex items-center gap-2 text-xl font-bold text-foreground hover:text-accent transition-colors"
             >
-              Promptaze
+              <span className="text-2xl" aria-hidden>⚡</span>
+              PromptAZ
             </Link>
-            <nav className="text-sm text-muted-foreground">
-              <Link
-                href="/"
-                className="hover:text-foreground transition-colors"
-              >
-                Ana səhifə
-              </Link>
+            <nav className="flex items-center gap-6 text-sm text-foreground">
+              <NavLinks />
             </nav>
           </div>
         </header>
-        <div className="flex-1 w-full mx-auto max-w-3xl px-4 sm:px-6 py-8 sm:py-10">
+        <div className="flex-1 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-10">
           {children}
         </div>
         <footer className="border-t border-border/60 py-6 mt-auto">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 text-center text-sm text-muted-foreground">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 text-center text-sm text-muted-foreground">
             Azərbaycan dilində AI prompt kitabxanası
           </div>
         </footer>
