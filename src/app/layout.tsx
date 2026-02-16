@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
-import { NavLinks } from "./components/nav-links";
+import { HeaderNav } from "./components/header-nav";
 import { PlausibleInit } from "./plausible-init";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://promptaze.com";
@@ -89,18 +89,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </span>
               Promptaze
             </Link>
-            <nav className="flex items-center gap-6 text-sm text-foreground">
-              <NavLinks />
-              <a
-                href="https://github.com/elchuzade/promptaze"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-accent transition-colors"
-              >
-                <GitHubIcon className="size-5" />
-                <span>Contribute</span>
-              </a>
-            </nav>
+            <HeaderNav />
           </div>
         </header>
         <div className="flex-1 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-10">
