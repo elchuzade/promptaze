@@ -35,14 +35,14 @@ export default async function Home() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
-            href="/#kitabxana"
+            href="/kitabxana"
             className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-base font-medium text-white shadow-sm transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
           >
             Promptlara bax
             <span aria-hidden>→</span>
           </Link>
           <Link
-            href="/#kitabxana"
+            href="/oyren"
             className="inline-flex items-center rounded-lg border-2 border-border bg-card px-6 py-3 text-base font-medium text-foreground transition hover:border-accent/50 hover:bg-accent/5 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
           >
             Öyrənməyə başla
@@ -50,8 +50,16 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Prompt library with category filters and cards */}
-      <section id="kitabxana" className="scroll-mt-8">
+      {/* Prompt library preview */}
+      <section className="scroll-mt-8">
+        <div className="flex justify-end mb-2">
+          <Link
+            href="/kitabxana"
+            className="text-sm font-medium text-accent hover:underline"
+          >
+            Axtarış və filtrlərlə hamısına bax →
+          </Link>
+        </div>
         <PromptLibrary categories={categories} prompts={promptItems} />
       </section>
     </main>
