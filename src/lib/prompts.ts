@@ -17,9 +17,9 @@ export async function getAllPrompts() {
 
     const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
     for (const file of files) {
-      const slug = file.replace(".md", "");
       const raw = fs.readFileSync(path.join(dir, file), "utf8");
       const { data, content } = matter(raw);
+      const slug = (data.slug ?? file.replace(".md", "")).toString().normalize("NFC");
 
       const htmlContent = String(await remark().use(html).process(content));
       const promptBlock = raw.split("PROMPT:")[0]?.trim() ?? "";
@@ -46,7 +46,8 @@ export async function getPromptsByCategory(category: string) {
 }
 
 export async function getPrompt(category: string, slug: string) {
+  const slugNfc = slug.normalize("NFC");
   return (await getAllPrompts()).find(
-    (p) => p.category === category && p.slug === slug,
+    (p) => p.category === category && p.slug === slugNfc,
   );
 }

@@ -1,6 +1,6 @@
 ---
 title: "API endpoint dizaynı"
-category: "dev"
+category: "development"
 difficulty: "intermediate"
 models: ["gemini", "gpt"]
 tags: ["api", "backend"]

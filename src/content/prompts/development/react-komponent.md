@@ -1,6 +1,6 @@
 ---
 title: "React komponentinin yaradılması"
-category: "dev"
+category: "development"
 difficulty: "beginner"
 models: ["gemini", "gpt"]
 tags: ["react", "frontend"]

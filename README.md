@@ -49,11 +49,11 @@ Open [http://localhost:3000](http://localhost:3000). Your new prompts will show 
 
 Current categories live in `src/content/categories.json`. Use one of the existing slugs:
 
-| Slug        | Title                     |
-| ----------- | ------------------------- |
-| `biznes`    | Biznes və Startaplar      |
-| `marketinq` | Marketinq və Sosial Media |
-| `dev`       | Proqramlaşdırma və Veb    |
+| Slug           | Title                     |
+| -------------- | ------------------------- |
+| `business`     | Biznes və Startaplar      |
+| `marketing`    | Marketinq və Sosial Media |
+| `development`  | Proqramlaşdırma və Veb    |
 
 If you want a **new category**, add it to `categories.json` and create a folder with the same slug under `src/content/prompts/`.
 
@@ -65,22 +65,22 @@ Add a new `.md` file in the right category folder:
 
 ```
 src/content/prompts/
-  biznes/
+  business/
     your-prompt-slug.md    ← new file here
-  marketinq/
-  dev/
+  marketing/
+  development/
 ```
 
-**Filename** = URL slug (e.g. `biznes-plani.md` → `/prompts/biznes/biznes-plani`).
+**Filename** = URL slug (e.g. `biznes-plani.md` → `/prompts/business/biznes-plani`).
 
-**Azərbaycanca:** Uyğun kateqoriya qovluğunda yeni `.md` faylı yaradın. Fayl adı URL-da görünəcək (məs: `biznes-plani.md` → `/prompts/biznes/biznes-plani`).
+**Azərbaycanca:** Uyğun kateqoriya qovluğunda yeni `.md` faylı yaradın. Fayl adı URL-da görünəcək (məs: `biznes-plani.md` → `/prompts/business/biznes-plani`).
 
 ### 3. Use this format
 
 ```markdown
 ---
 title: "Your prompt title in Azerbaijani"
-category: "biznes"
+category: "business"
 difficulty: "beginner"
 models: ["gemini", "gpt"]
 tags: ["tag1", "tag2"]
@@ -99,12 +99,14 @@ Include instructions, placeholders, or structure.
 **Rules:**
 
 - **Frontmatter** (between `---`) is required: `title`, `category`. The rest is optional.
+- **slug** (optional): use an English, URL-friendly slug when the filename has non-ASCII characters (e.g. `slug: "revenue-model"` for `gəlir-modeli.md`). If omitted, the filename without `.md` is used in the URL.
 - **Description** = everything above the line `PROMPT:` (first paragraph is shown on the library cards).
 - **Copyable prompt** = everything below `PROMPT:` (this is what gets copied when someone clicks “Copy”).
 
 **Azərbaycanca:** Bu formatı istifadə edin.
 
 - **Frontmatter** (`---` arasında) mütləqdir: `title`, `category`. Qalanı istəyə bağlıdır.
+- **slug** (istəyə bağlı): fayl adında qeyri-ASCII simvollar olanda İngilizcə, URL üçün uyğun slug yazın (məs: `gəlir-modeli.md` üçün `slug: "revenue-model"`). Yazmasanız, URL-də fayl adı (`.md` olmadan) işlənir.
 - **Təsvir** = `PROMPT:` sətrindən əvvəlki mətin (ilk abzas kitabxana kartlarında göstərilir).
 - **Kopyalanan prompt** = `PROMPT:`-dan sonrakı mətin (istifadəçi "Kopyala" düyməsini basanda bu hissə kopyalanır).
 
@@ -112,9 +114,9 @@ Include instructions, placeholders, or structure.
 
 ## 📄 Example
 
-See a real prompt: [`src/content/prompts/biznes/biznes-plani.md`](src/content/prompts/biznes/biznes-plani.md).
+See a real prompt: [`src/content/prompts/business/biznes-plani.md`](src/content/prompts/business/biznes-plani.md).
 
-**Azərbaycanca:** Nümunə prompt: [`src/content/prompts/biznes/biznes-plani.md`](src/content/prompts/biznes/biznes-plani.md).
+**Azərbaycanca:** Nümunə prompt: [`src/content/prompts/business/biznes-plani.md`](src/content/prompts/business/biznes-plani.md).
 
 ---
 

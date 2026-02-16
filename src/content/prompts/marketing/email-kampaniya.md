@@ -1,6 +1,6 @@
 ---
 title: "Email marketinq kampaniyası"
-category: "marketinq"
+category: "marketing"
 difficulty: "intermediate"
 models: ["gemini", "gpt"]
 tags: ["email", "kampaniya"]

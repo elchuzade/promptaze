@@ -1,5 +1,5 @@
 [
-  { "slug": "biznes", "title": "Biznes və Startaplar" },
-  { "slug": "marketinq", "title": "Marketinq və Sosial Media" },
-  { "slug": "dev", "title": "Proqramlaşdırma və Veb" }
+  { "slug": "business", "title": "Biznes və Startaplar" },
+  { "slug": "marketing", "title": "Marketinq və Sosial Media" },
+  { "slug": "development", "title": "Proqramlaşdırma və Veb" }
 ]

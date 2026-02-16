@@ -1,6 +1,7 @@
 ---
 title: "Rəqib analizi"
-category: "biznes"
+slug: "competitor-analysis"
+category: "business"
 difficulty: "intermediate"
 models: ["gemini", "gpt"]
 tags: ["rəqib", "analiz", "strateji"]

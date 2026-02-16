@@ -1,6 +1,7 @@
 ---
 title: "Brend səsinin müəyyən edilməsi"
-category: "marketinq"
+slug: "brand-voice"
+category: "marketing"
 difficulty: "intermediate"
 models: ["gemini", "gpt"]
 tags: ["brend", "kommunikasiya"]

@@ -1,6 +1,6 @@
 ---
 title: "Kodun refaktorinqi"
-category: "dev"
+category: "development"
 difficulty: "advanced"
 models: ["gemini", "gpt"]
 tags: ["refaktorinq", "keyfiyyət"]

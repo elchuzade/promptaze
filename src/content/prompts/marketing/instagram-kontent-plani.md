@@ -1,6 +1,6 @@
 ---
 title: "Instagram üçün kontent planı"
-category: "marketinq"
+category: "marketing"
 difficulty: "beginner"
 models: ["gemini", "gpt"]
 tags: ["instagram", "kontent", "sosial-media"]

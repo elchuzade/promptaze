@@ -1,6 +1,6 @@
 ---
 title: "İnvestor üçün pitch deck strukturu"
-category: "biznes"
+category: "business"
 difficulty: "beginner"
 models: ["gemini", "gpt"]
 tags: ["investor", "pitch", "startap"]

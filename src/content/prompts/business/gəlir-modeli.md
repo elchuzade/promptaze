@@ -1,6 +1,7 @@
 ---
 title: "Gəlir modeli dizaynı"
-category: "biznes"
+slug: "revenue-model"
+category: "business"
 difficulty: "intermediate"
 models: ["gemini", "gpt"]
 tags: ["gəlir", "monetizasiya"]

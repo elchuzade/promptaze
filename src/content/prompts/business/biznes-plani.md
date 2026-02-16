@@ -1,6 +1,6 @@
 ---
 title: "Startap üçün biznes planı"
-category: "biznes"
+category: "business"
 difficulty: "beginner"
 models: ["gemini", "gpt"]
 tags: ["startap", "planlama"]
