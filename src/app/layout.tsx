@@ -63,8 +63,13 @@ function GitHubIcon({ className }: { className?: string }) {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="az">
+    <html lang="az" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=typeof localStorage!=='undefined'&&localStorage.getItem('promptaze-theme');var r=document.documentElement;if(t==='dark'){r.classList.add('dark');r.classList.remove('light');}else if(t==='light'){r.classList.add('light');r.classList.remove('dark');}else{r.classList.remove('light','dark');}})();`,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

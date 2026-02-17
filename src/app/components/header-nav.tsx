@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { ThemeToggle } from "./theme-toggle";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -183,10 +184,12 @@ export function HeaderNav() {
           <GitHubIcon className="size-5" />
           <span>Contribute</span>
         </a>
+        <ThemeToggle />
       </nav>
 
-      {/* Mobile: burger button */}
-      <div className="md:hidden flex items-center">
+      {/* Mobile: theme toggle + burger */}
+      <div className="md:hidden flex items-center gap-2">
+        <ThemeToggle />
         <button
           type="button"
           onClick={() => setMobileOpen(true)}
