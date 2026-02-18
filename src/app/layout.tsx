@@ -104,6 +104,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className="mx-auto max-w-5xl px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm text-muted-foreground">
             <span>Azərbaycan dilində AI prompt kitabxanası</span>
             <a
+              href="https://promptaze.featurebase.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 hover:text-accent transition-colors"
+            >
+              Rəy bildir
+            </a>
+            <a
               href="https://github.com/elchuzade/promptaze"
               target="_blank"
               rel="noopener noreferrer"

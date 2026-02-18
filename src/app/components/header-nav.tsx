@@ -142,6 +142,15 @@ export function HeaderNav() {
               </Link>
             ))}
             <a
+              href="https://promptaze.featurebase.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="inline-flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-chip-inactive hover:text-accent transition-colors"
+            >
+              Rəy bildir
+            </a>
+            <a
               href="https://github.com/elchuzade/promptaze"
               target="_blank"
               rel="noopener noreferrer"
@@ -175,6 +184,14 @@ export function HeaderNav() {
             {label}
           </Link>
         ))}
+        <a
+          href="https://promptaze.featurebase.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 hover:text-accent transition-colors"
+        >
+          Rəy bildir
+        </a>
         <a
           href="https://github.com/elchuzade/promptaze"
           target="_blank"
