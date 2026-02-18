@@ -34,12 +34,21 @@ export const metadata: Metadata = {
     title: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
     description:
       "Hazır AI promptlarını kopyalayın, öyrənin və öz ehtiyaclarınıza uyğunlaşdırın. Azərbaycan dilində ilk AI prompt kitabxanası.",
+    images: [
+      {
+        url: `${siteUrl}/promptaze-post.png`,
+        width: 1200,
+        height: 630,
+        alt: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
     description:
       "Hazır AI promptlarını kopyalayın, öyrənin və öz ehtiyaclarınıza uyğunlaşdırın. Azərbaycan dilində ilk AI prompt kitabxanası.",
+    images: [`${siteUrl}/promptaze-post.png`],
   },
   robots: {
     index: true,
