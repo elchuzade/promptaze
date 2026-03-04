@@ -25,6 +25,11 @@ function applyTheme(theme: "light" | "dark") {
   root.classList.remove("light", "dark");
   root.classList.add(theme);
   localStorage.setItem(STORAGE_KEY, theme);
+  if (typeof document !== "undefined") {
+    document.dispatchEvent(
+      new CustomEvent("promptaze-theme-change", { detail: { theme } })
+    );
+  }
 }
 
 function SunIcon({ className }: { className?: string }) {

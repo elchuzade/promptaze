@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import "./globals.css";
+import { HeaderLogo } from "./components/header-logo";
 import { HeaderNav } from "./components/header-nav";
 import { PlausibleInit } from "./plausible-init";
 
@@ -55,6 +55,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/promptaze-logo-small.png",
+  },
 };
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -94,15 +97,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <PlausibleInit />
         <header className="border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 sticky top-0 z-20">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 py-4 flex items-center justify-between">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-xl font-bold text-foreground hover:text-accent transition-colors"
-            >
-              <span className="text-2xl" aria-hidden>
-                ⚡
-              </span>
-              Promptaze
-            </Link>
+            <HeaderLogo />
             <HeaderNav />
           </div>
         </header>
