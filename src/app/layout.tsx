@@ -26,6 +26,26 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Promptaze" }],
   creator: "Promptaze",
+  twitter: {
+    card: "summary_large_image",
+    title: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
+    description:
+      "Hazır AI promptlarını kopyalayın, öyrənin və öz ehtiyaclarınıza uyğunlaşdırın. Azərbaycan dilində ilk AI prompt kitabxanası.",
+    images: [`${siteUrl}/promptaze-post.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL(siteUrl),
+  icons: {
+    icon: [
+      { url: `${siteUrl}/promptaze-logo-small.png`, type: "image/png" },
+      { url: "/promptaze-logo-small.png", type: "image/png", sizes: "any" },
+    ],
+    apple: `${siteUrl}/promptaze-logo-small.png`,
+    shortcut: `${siteUrl}/promptaze-logo-small.png`,
+  },
   openGraph: {
     type: "website",
     locale: "az_AZ",
@@ -41,22 +61,13 @@ export const metadata: Metadata = {
         height: 630,
         alt: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
       },
+      {
+        url: `${siteUrl}/promptaze-logo-small.png`,
+        width: 512,
+        height: 512,
+        alt: "Promptaze",
+      },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Promptaze — Azərbaycan dilində AI prompt kitabxanası",
-    description:
-      "Hazır AI promptlarını kopyalayın, öyrənin və öz ehtiyaclarınıza uyğunlaşdırın. Azərbaycan dilində ilk AI prompt kitabxanası.",
-    images: [`${siteUrl}/promptaze-post.png`],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  metadataBase: new URL(siteUrl),
-  icons: {
-    icon: "/promptaze-logo-small.png",
   },
 };
 
@@ -77,6 +88,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="az" suppressHydrationWarning>
       <head>
+        <link rel="icon" href={`${siteUrl}/promptaze-logo-small.png`} type="image/png" />
+        <link rel="apple-touch-icon" href={`${siteUrl}/promptaze-logo-small.png`} />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var t=typeof localStorage!=='undefined'&&localStorage.getItem('promptaze-theme');var r=document.documentElement;if(t==='dark'){r.classList.add('dark');r.classList.remove('light');}else if(t==='light'){r.classList.add('light');r.classList.remove('dark');}else{r.classList.remove('light','dark');}})();`,
