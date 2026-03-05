@@ -1,53 +1,83 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import { CONTENT_DIR } from "./paths";
 
-const ROOT = path.join(CONTENT_DIR, "prompts");
-console.log("PROMPTS ROOT:", ROOT);
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
 
-export async function getAllPrompts() {
-  const categories = fs.readdirSync(ROOT);
-  const prompts = [];
-  for (const category of categories) {
-    const dir = path.join(ROOT, category);
-    if (!fs.statSync(dir).isDirectory()) continue;
+type ApiPrompt = {
+  id: string;
+  slug: string;
+  title: string;
+  category_slug: string;
+  difficulty: string | null;
+  models: string[] | null;
+  tags: string[] | null;
+  body: string | null;
+};
 
-    const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
-    for (const file of files) {
-      const raw = fs.readFileSync(path.join(dir, file), "utf8");
-      const { data, content } = matter(raw);
-      const slug = (data.slug ?? file.replace(".md", "")).toString().normalize("NFC");
+type PromptView = {
+  slug: string;
+  category: string;
+  meta: { title?: string };
+  html: string;
+  promptText: string;
+  description: string;
+};
 
-      const htmlContent = String(await remark().use(html).process(content));
-      const promptBlock = raw.split("PROMPT:")[0]?.trim() ?? "";
-      const promptText = raw.split("PROMPT:")[1]?.trim() ?? "";
-      const description =
-        promptBlock.split(/\n\n+/)[0]?.trim().slice(0, 160) ?? "";
+async function toPromptView(p: ApiPrompt): Promise<PromptView> {
+  const body = p.body ?? "";
+  const htmlContent = String(await remark().use(html).process(body));
+  const description =
+    body.split(/\n\n+/)[0]?.trim().slice(0, 160) ?? "";
 
-      prompts.push({
-        slug,
-        category,
-        meta: data,
-        html: htmlContent,
-        promptText,
-        description,
-      });
-    }
+  return {
+    slug: p.slug.normalize("NFC"),
+    category: p.category_slug,
+    meta: { title: p.title },
+    html: htmlContent,
+    promptText: body,
+    description,
+  };
+}
+
+export async function getAllPrompts(): Promise<PromptView[]> {
+  const res = await fetch(`${API_BASE}/prompts`, {
+    // Cache for a short time; adjust as needed
+    next: { revalidate: 60 },
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch prompts from API");
   }
-
-  return prompts;
+  const data = (await res.json()) as ApiPrompt[];
+  const views: PromptView[] = [];
+  for (const p of data) {
+    views.push(await toPromptView(p));
+  }
+  return views;
 }
 
-export async function getPromptsByCategory(category: string) {
-  return (await getAllPrompts()).filter((p) => p.category === category);
+export async function getPromptsByCategory(
+  category: string,
+): Promise<PromptView[]> {
+  const all = await getAllPrompts();
+  return all.filter((p) => p.category === category);
 }
 
-export async function getPrompt(category: string, slug: string) {
+export async function getPrompt(
+  category: string,
+  slug: string,
+): Promise<PromptView | undefined> {
   const slugNfc = slug.normalize("NFC");
-  return (await getAllPrompts()).find(
-    (p) => p.category === category && p.slug === slugNfc,
-  );
+  const res = await fetch(`${API_BASE}/prompts/${encodeURIComponent(slugNfc)}`, {
+    next: { revalidate: 60 },
+  });
+  if (!res.ok) {
+    return undefined;
+  }
+  const data = (await res.json()) as ApiPrompt;
+  const view = await toPromptView(data);
+  if (view.category !== category) {
+    return undefined;
+  }
+  return view;
 }

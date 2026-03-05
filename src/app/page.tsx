@@ -1,15 +1,10 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
-import { CONTENT_DIR } from "@/lib/paths";
 import { getAllPrompts } from "@/lib/prompts";
+import { fetchCategories } from "@/lib/categories";
 import { PromptLibrary } from "./components/prompt-library";
 
 export default async function Home() {
-  const categories = JSON.parse(
-    fs.readFileSync(path.join(CONTENT_DIR, "categories.json"), "utf8"),
-  ) as { slug: string; title: string }[];
-
+  const categories = await fetchCategories();
   const allPrompts = await getAllPrompts();
   const promptItems = allPrompts.map((p) => ({
     slug: p.slug,

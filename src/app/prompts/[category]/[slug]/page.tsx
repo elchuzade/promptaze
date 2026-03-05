@@ -25,13 +25,15 @@ export default async function PromptPage({
     );
   }
 
+  const categoryTitle = await getCategoryTitle(category);
+
   return (
     <main>
       <Link
         href={`/prompts/${category}`}
         className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors"
       >
-        ← {getCategoryTitle(category)}
+        ← {categoryTitle}
       </Link>
 
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">

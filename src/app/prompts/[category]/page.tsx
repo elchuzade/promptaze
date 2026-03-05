@@ -8,7 +8,7 @@ export default async function CategoryPage({
   params: Promise<{ category: string }>;
 }) {
   const { category } = await params;
-  const categoryTitle = getCategoryTitle(category);
+  const categoryTitle = await getCategoryTitle(category);
   const prompts = await getPromptsByCategory(category);
 
   if (!prompts.length) {

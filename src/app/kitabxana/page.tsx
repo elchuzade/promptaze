@@ -1,9 +1,7 @@
-import fs from "fs";
-import path from "path";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CONTENT_DIR } from "@/lib/paths";
 import { getAllPrompts } from "@/lib/prompts";
+import { fetchCategories } from "@/lib/categories";
 import { LibraryWithSearch } from "../components/library-with-search";
 
 export const metadata: Metadata = {
@@ -13,10 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function KitabxanaPage() {
-  const categories = JSON.parse(
-    fs.readFileSync(path.join(CONTENT_DIR, "categories.json"), "utf8"),
-  ) as { slug: string; title: string }[];
-
+  const categories = await fetchCategories();
   const allPrompts = await getAllPrompts();
   const promptItems = allPrompts.map((p) => ({
     slug: p.slug,
