@@ -1,6 +1,6 @@
 "use client";
 
-const API_BASE =
+export const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://api.promptaze.com";
 
 const TOKEN_KEY = "promptaze_admin_token";
@@ -18,13 +18,41 @@ export type LoginResult = {
 };
 
 export function getStoredToken(): string | null {
-  if (typeof window === "undefined") return null;
-  return window.localStorage.getItem(TOKEN_KEY);
+  if (typeof document === "undefined") return null;
+  const cookies = document.cookie.split("; ").filter(Boolean);
+  const match = cookies.find((c) => c.startsWith(`${TOKEN_KEY}=`));
+  if (!match) return null;
+  const value = match.split("=", 2)[1];
+  return decodeURIComponent(value);
 }
 
 export function clearStoredToken() {
-  if (typeof window === "undefined") return;
-  window.localStorage.removeItem(TOKEN_KEY);
+  if (typeof document === "undefined") return;
+  document.cookie = `${TOKEN_KEY}=; Max-Age=0; Path=/`;
+}
+
+function setTokenCookie(token: string) {
+  if (typeof document === "undefined") return;
+  const maxAgeSeconds = 60 * 60 * 24 * 7; // 7 days
+  document.cookie = `${TOKEN_KEY}=${encodeURIComponent(
+    token,
+  )}; Max-Age=${maxAgeSeconds}; Path=/`;
+}
+
+export function getTokenPayload():
+  | (AuthUser & { sub?: string; iat?: number; exp?: number })
+  | null {
+  const token = getStoredToken();
+  if (!token) return null;
+  const parts = token.split(".");
+  if (parts.length !== 3) return null;
+  try {
+    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
+    const json = atob(base64);
+    return JSON.parse(json);
+  } catch {
+    return null;
+  }
 }
 
 export async function loginAdmin(
@@ -48,7 +76,7 @@ export async function loginAdmin(
 
   const data = (await res.json()) as LoginResult;
   if (typeof window !== "undefined") {
-    window.localStorage.setItem(TOKEN_KEY, data.token);
+    setTokenCookie(data.token);
   }
   return data;
 }

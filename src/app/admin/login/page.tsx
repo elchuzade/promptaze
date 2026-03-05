@@ -49,9 +49,9 @@ export default function AdminLoginPage() {
         Admin Giriş
       </h1>
       <p className="text-muted-foreground mb-6 text-sm">
-        Bu səhifə yalnız adminlər üçündür. Yeni admin hesablarını Postman
-        və ya digər HTTP müştərisi ilə <code>/auth/register</code> endpoint-i
-        vasitəsilə yarada bilərsiniz.
+        Bu səhifə yalnız adminlər üçün nəzərdə tutulmuşdur. Zəhmət olmasa
+        idarəetmə panelinə daxil olmaq üçün admin hesabınızın email və şifrəsini
+        daxil edin.
       </p>
 
       <form
