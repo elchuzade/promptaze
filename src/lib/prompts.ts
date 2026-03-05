@@ -2,7 +2,7 @@ import { remark } from "remark";
 import html from "remark-html";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://api.promptaze.com";
 
 type ApiPrompt = {
   id: string;

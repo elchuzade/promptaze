@@ -1,7 +1,7 @@
 "use client";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:4000";
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "https://api.promptaze.com";
 
 const TOKEN_KEY = "promptaze_admin_token";
 
