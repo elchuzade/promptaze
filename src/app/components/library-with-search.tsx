@@ -150,13 +150,22 @@ export function LibraryWithSearch({
               )}
             </div>
           ))}
+          {isAdmin && (
+            <button
+              type="button"
+              onClick={() => router.push("/admin/categories/new")}
+              className="mt-3 inline-flex items-center justify-center rounded-lg px-3 py-2 text-xs font-medium text-accent border border-accent/40 bg-accent/5 hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent"
+            >
+              Yeni kateqoriya əlavə et
+            </button>
+          )}
         </nav>
       </aside>
 
       {/* Main: search + grid */}
       <div className="flex-1 min-w-0">
         {/* Search */}
-        <div className="relative mb-6">
+        <div className="relative mb-3">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" aria-hidden>
             <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -172,9 +181,20 @@ export function LibraryWithSearch({
           />
         </div>
 
-        <p className="text-sm text-muted-foreground mb-4">
-          {filtered.length} nəticə
-        </p>
+        <div className="flex items-center justify-between mb-4 gap-2">
+          <p className="text-sm text-muted-foreground">
+            {filtered.length} nəticə
+          </p>
+          {isAdmin && (
+            <button
+              type="button"
+              onClick={() => router.push("/admin/prompts/new")}
+              className="inline-flex items-center rounded-lg px-3 py-1.5 text-xs font-medium text-accent border border-accent/40 bg-accent/5 hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent"
+            >
+              Yeni prompt əlavə et
+            </button>
+          )}
+        </div>
 
         {/* Prompt cards grid */}
         <div className="grid gap-4 sm:grid-cols-2">
